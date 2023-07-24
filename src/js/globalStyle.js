@@ -6,7 +6,7 @@ ${cssResets};
 
 html{
     scroll-behavior: smooth;
-    ${'' /* scroll-padding-top: 70px; */}
+    ${"" /* scroll-padding-top: 70px; */}
 }
 
 body {
@@ -20,4 +20,4 @@ body {
 
 `;
 
-export default GlobalStyle
+export default GlobalStyle;
