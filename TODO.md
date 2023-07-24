@@ -1,0 +1,1 @@
+drop down width везде одинаковая

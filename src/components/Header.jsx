@@ -25,7 +25,7 @@ const HeaderStyled = styled.header`
             &-content {
                 /* max-width: 72.5rem; */
                 margin: 0 auto;
-                background-color: red;
+                /* background-color: red; */
             }
         }
     }
