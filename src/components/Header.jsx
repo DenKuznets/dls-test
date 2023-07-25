@@ -26,7 +26,6 @@ const BurgerStyled = styled.img`
 `;
 
 const Burger = (props) => {
-    // console.log(props);
     return (
         <BurgerStyled
             onClick={()=> props.onClick()}

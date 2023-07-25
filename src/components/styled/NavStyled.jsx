@@ -35,8 +35,6 @@ const NavStyled = styled.nav`
                 border: 1px solid #e9e9e9;
                 min-width: 11rem;
                 display: none;
-                /* display: flex; */
-                grid-template-columns: 1fr 1fr;
                 position: absolute;
                 flex-direction: column;
                 top: 100%;
@@ -95,7 +93,7 @@ const NavStyled = styled.nav`
             &:hover {
                 cursor: pointer;
                 & > .submenu {
-                    transition: all 1.2s ease;
+                    transition: all 0.4s ease;
                     display: flex;
                 }
             }

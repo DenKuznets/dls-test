@@ -63,7 +63,7 @@ const Nav = () => {
     const listToShow = createList(menuItems);
 
     return (
-        <NavStyled className="nav-mobile" ref={navRef}>
+        <NavStyled ref={navRef}>
             <ul>{listToShow}</ul>
         </NavStyled>
     );
