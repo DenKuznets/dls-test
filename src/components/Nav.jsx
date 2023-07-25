@@ -3,6 +3,14 @@ import arrowDown from "../../public/images/arrow-down.svg";
 import { menuItems } from "../js/menuItems";
 
 const NavStyled = styled.nav`
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 3;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 0 1.25rem;
+    display: flex;
+    justify-content: center;
     & > ul {
         display: flex;
         gap: 2rem;
@@ -30,6 +38,8 @@ const NavStyled = styled.nav`
                 flex-direction: column;
                 top: 100%;
                 left: 0;
+                z-index: 3;
+                background-color: white;
                 li {
                     display: flex;
                     position: relative;
@@ -86,6 +96,9 @@ const NavStyled = styled.nav`
                 }
             }
         }
+    }
+    @media only screen and (max-width: 620px) {
+        display: none;
     }
 `;
 

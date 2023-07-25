@@ -1,64 +1,33 @@
 import { styled } from "styled-components";
-import Nav from "./Nav";
 
 const HeaderStyled = styled.header`
-    padding-bottom: 1.28rem;
-    height: 8.75rem;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 1.81rem 1.25rem 1.59rem;
     .header {
-        &__top {
-            padding: 1.81rem 1.25rem 1.59rem;
-            &-content {
-                max-width: 72.5rem;
-                margin: 0 auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            &-logo {
-                margin: 0 auto;
-            }
-        }
-        &__bottom {
-            padding: 0 1.25rem;
+        &__content {
+            max-width: 72.5rem;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            &-content {
-                /* max-width: 72.5rem; */
-                margin: 0 auto;
-                /* background-color: red; */
-            }
+            align-items: center;
         }
-    }
-    hr {
-        border: none;
-        border-bottom: 1px solid #e9e9e9;
+        &__logo {
+            margin: 0 auto;
+        }
     }
 `;
 
 const Header = () => {
     return (
-        <HeaderStyled className="header">
-            <div className="header__top">
-                <div className="header__top-content">
-                    <img
-                        className="header__top-logo"
-                        src="./images/logo.svg"
-                        alt=""
-                    />
-                    <img
-                        className="header__top-search"
-                        src="./images/search-btn.svg"
-                        alt=""
-                    />
-                </div>
+        <HeaderStyled>
+            <div className="header__content">
+                <img className="header__logo" src="./images/logo.svg" alt="" />
+                <img
+                    className="header__search"
+                    src="./images/search-btn.svg"
+                    alt=""
+                />
             </div>
-            <hr />
-
-            <div className="header__bottom">
-                <div className="header__bottom-content"><Nav /></div>
-            </div>
-
-            <hr />
         </HeaderStyled>
     );
 };
