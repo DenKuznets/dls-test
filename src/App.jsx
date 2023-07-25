@@ -7,17 +7,21 @@ import NavMobile from "./components/NavMobile";
 function App() {
     const [showNavMobile, setShowNavMobile] = useState(false);
 
-      useEffect(() => {
-          if (showNavMobile) document.body.style.overflow = "hidden";
-          else document.body.style.overflow = "auto";
-      }, [showNavMobile]);
+    useEffect(() => {
+        if (showNavMobile) document.body.style.overflow = "hidden";
+        else document.body.style.overflow = "auto";
+    }, [showNavMobile]);
 
     return (
         <>
             <GlobalStyle />
             <Header handleBurgerClick={() => setShowNavMobile(true)} />
             {!showNavMobile && <Nav />}
-            <NavMobile className={showNavMobile ? "nav-mobile-active" : ""} handleClose={() => setShowNavMobile(false)} />
+            {/* <Nav /> */}
+            <NavMobile
+                className={showNavMobile ? "nav-mobile-active" : ""}
+                handleClose={() => setShowNavMobile(false)}
+            />
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
             perferendis minima sed aperiam adipisci dicta quod exercitationem
             soluta ducimus, totam sapiente non vel explicabo eius. Distinctio
