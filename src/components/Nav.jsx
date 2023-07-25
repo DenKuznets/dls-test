@@ -1,75 +1,70 @@
 import { styled } from "styled-components";
 import arrowDown from "../../public/images/arrow-down.svg";
-
-const list = [
-    {
-        title: "Demos",
-        submenu: [],
-    },
-    {
-        title: "Post",
-        submenu: [
-            {
-                title: "Post Header",
-                submenu: [],
-            },
-            {
-                title: "Post Layout",
-                submenu: [],
-            },
-            {
-                title: "Share Buttons",
-                submenu: [],
-            },
-            {
-                title: "Gallery Post",
-                submenu: [],
-            },
-            {
-                title: "Video Post",
-                submenu: [],
-            },
-        ],
-    },
-    {
-        title: "Features",
-        submenu: [],
-    },
-    {
-        title: "Categories",
-        submenu: [],
-    },
-    {
-        title: "Shop",
-        submenu: [],
-    },
-    {
-        title: "Buy Now",
-    },
-];
+import { menuItems } from "../js/menuItems";
 
 const NavStyled = styled.nav`
-    ul {
+    & > ul {
         display: flex;
         gap: 2rem;
         list-style-type: none;
-        li {
+        & > li {
+            display: flex;
+            align-items: center;
+            height: 3.6rem;
+            line-height: 1rem;
             font-size: 1rem;
             font-style: normal;
             font-weight: 500;
-            line-height: 1rem;
+            position: relative;
             img {
                 margin-left: 0.25rem;
             }
 
             .submenu {
+                border: 1px solid #e9e9e9;
+                min-width: 11rem;
                 display: none;
-                display: block;
+                /* display: flex; */
                 grid-template-columns: 1fr 1fr;
                 position: absolute;
+                flex-direction: column;
+                top: 100%;
+                left: 0;
                 li {
-                    background-color: red;
                     display: flex;
+                    position: relative;
+                    padding-top: 1.25rem;
+                    &:last-child {
+                        padding-bottom: 1.25rem;
+                    }
+                    .wrapper {
+                        margin: 0 1.25rem;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                    }
+                    &:not(:first-child) {
+                        padding-top: 0.5rem;
+                        .wrapper {
+                        }
+                    }
+                    &:not(:last-child) {
+                        .wrapper {
+                            padding-bottom: 0.5rem;
+                            border-bottom: 1px solid #e9e9e9;
+                        }
+                    }
+                    &:only-child {
+                        .wrapper {
+                            border: none;
+                            padding: 0;
+                        }
+                    }
+                    &:hover {
+                        & > .submenu {
+                            display: flex;
+                        }
+                    }
                     span {
                         margin-right: auto;
                     }
@@ -77,12 +72,17 @@ const NavStyled = styled.nav`
                         transform: rotate(-90deg);
                         margin-left: auto;
                     }
+                    .submenu {
+                        top: 0;
+                        left: 100%;
+                    }
                 }
             }
             &:hover {
                 cursor: pointer;
-                .submenu {
-                    display: block;
+                & > .submenu {
+                    transition: all 1.2s ease;
+                    display: flex;
                 }
             }
         }
@@ -95,19 +95,25 @@ const Nav = () => {
             if (object.submenu) {
                 return (
                     <li key={index}>
-                        <span>{object.title}</span>
-                        <img src={arrowDown} alt="" />
+                        <div className="wrapper">
+                            <span>{object.title}</span>
+                            <img src={arrowDown} alt="" />
+                        </div>
                         <ul className="submenu">
                             {createList(object.submenu)}
                         </ul>
                     </li>
                 );
             }
-            return <li key={index}>{object.title}</li>;
+            return (
+                <li key={index}>
+                    <div className="wrapper">{object.title}</div>
+                </li>
+            );
         });
     };
 
-    const listToShow = createList(list);
+    const listToShow = createList(menuItems);
 
     return (
         <NavStyled>

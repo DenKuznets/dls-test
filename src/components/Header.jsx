@@ -19,7 +19,7 @@ const HeaderStyled = styled.header`
             }
         }
         &__bottom {
-            padding: 1.32rem 1.25rem 1.25rem;
+            padding: 0 1.25rem;
             display: flex;
             justify-content: center;
             &-content {
