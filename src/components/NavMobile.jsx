@@ -3,18 +3,21 @@ import { menuItems } from "../js/menuItems";
 
 const NavMobileStyled = styled.nav`
     top: 0;
-    left: 0;
+    left: -100%;
     position: fixed;
     background-color: rgba(256, 256, 256, 0.8);
-    width: 100vw;
-    /* z-index: 999; */
+    width: 100%;
+    transition: 0.4s;
+    &.nav-mobile-active {
+        left: 0;
+    }
     ul {
         height: 100vh;
         background-color: white;
         list-style-type: none;
         width: 80%;
         border: 1px solid #e9e9e9;
-         li {
+        li {
             padding: 0 1.25rem;
             span {
                 margin-right: 0.25rem;
@@ -102,11 +105,22 @@ const NavMobile = (props) => {
     const listToShow = createList(menuItems);
 
     return (
-        <NavMobileStyled>
+        <NavMobileStyled
+            onClick={(e) => {
+                if (e.target.nodeName === "NAV") {
+                    props.handleClose();
+                }
+            }}
+            className={props.className}
+        >
             <div className="nav-header">
                 <img src="./images/logo.svg" alt="" />
-                <img style={{cursor: "pointer"}} onClick={()=> props.handleClose()} src="./images/close-btn.svg" alt="" />
-                
+                <img
+                    style={{ cursor: "pointer" }}
+                    onClick={() => props.handleClose()}
+                    src="./images/close-btn.svg"
+                    alt=""
+                />
             </div>
             <ul>{listToShow}</ul>
         </NavMobileStyled>
