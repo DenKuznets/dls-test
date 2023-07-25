@@ -1,1 +1,1 @@
-drop down width везде одинаковая (gap на li flex но margin right auto на Img)
+desktop nav hover на элементах как в фигме
