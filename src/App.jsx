@@ -11,7 +11,7 @@ function App() {
         <>
             <GlobalStyle />
             <Header handleBurgerClick={() => setShowNavMobile(true)} />
-            {showNavMobile ? <NavMobile /> : <Nav />}
+            {showNavMobile ? <NavMobile handleClose={() => setShowNavMobile(false)} /> : <Nav />}
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
             perferendis minima sed aperiam adipisci dicta quod exercitationem
             soluta ducimus, totam sapiente non vel explicabo eius. Distinctio

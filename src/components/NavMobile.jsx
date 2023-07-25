@@ -5,7 +5,7 @@ const NavMobileStyled = styled.nav`
     top: 0;
     left: 0;
     position: fixed;
-    background-color: rgba(256, 256, 256, 0.5);
+    background-color: rgba(256, 256, 256, 0.8);
     width: 100vw;
     /* z-index: 999; */
     ul {
@@ -13,26 +13,24 @@ const NavMobileStyled = styled.nav`
         background-color: white;
         list-style-type: none;
         width: 80%;
-        li {
+        border: 1px solid #e9e9e9;
+         li {
             padding: 0 1.25rem;
             span {
                 margin-right: 0.25rem;
             }
             ul {
                 height: auto;
+                border: none;
+                width: 100%;
             }
         }
     }
     .accordion {
-        /* background-color: #eee; */
-        /* color: #444; */
         cursor: pointer;
-        /* padding: 18px; */
         width: 100%;
-        /* border: none; */
         text-align: left;
         outline: none;
-        /* font-size: 15px; */
         transition: 0.4s;
         padding-bottom: 1rem;
         padding-top: 1rem;
@@ -52,9 +50,18 @@ const NavMobileStyled = styled.nav`
         background-color: white;
         overflow: hidden;
     }
+    .nav-header {
+        width: 80%;
+        background-color: white;
+        padding: 2rem 1.25rem 1.6rem;
+        border: 1px solid #e9e9e9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 `;
 
-const NavMobile = () => {
+const NavMobile = (props) => {
     const handleClick = (e) => {
         e.stopPropagation(); //необходимо, иначе на вложенных списках клик будет срабатывать несколько раз и закрывать панель после открытия
         const accordion = e.target.closest("li").querySelector(".accordion");
@@ -96,6 +103,11 @@ const NavMobile = () => {
 
     return (
         <NavMobileStyled>
+            <div className="nav-header">
+                <img src="./images/logo.svg" alt="" />
+                <img style={{cursor: "pointer"}} onClick={()=> props.handleClose()} src="./images/close-btn.svg" alt="" />
+                
+            </div>
             <ul>{listToShow}</ul>
         </NavMobileStyled>
     );
