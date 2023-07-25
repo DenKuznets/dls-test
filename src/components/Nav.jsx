@@ -1,108 +1,43 @@
-import { styled } from "styled-components";
+import { useEffect, useRef, useState } from "react";
 import arrowDown from "../../public/images/arrow-down.svg";
 import { menuItems } from "../js/menuItems";
-
-const NavStyled = styled.nav`
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 3;
-    border-bottom: 1px solid #e9e9e9;
-    padding: 0 1.25rem;
-    display: flex;
-    justify-content: center;
-    & > ul {
-        display: flex;
-        gap: 2rem;
-        list-style-type: none;
-        & > li {
-            display: flex;
-            align-items: center;
-            height: 3.6rem;
-            line-height: 1rem;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 500;
-            position: relative;
-            img {
-                margin-left: 0.25rem;
-            }
-
-            .submenu {
-                border: 1px solid #e9e9e9;
-                min-width: 11rem;
-                display: none;
-                /* display: flex; */
-                grid-template-columns: 1fr 1fr;
-                position: absolute;
-                flex-direction: column;
-                top: 100%;
-                left: 0;
-                z-index: 3;
-                background-color: white;
-                li {
-                    display: flex;
-                    position: relative;
-                    padding-top: 1.25rem;
-                    &:last-child {
-                        padding-bottom: 1.25rem;
-                    }
-                    .wrapper {
-                        margin: 0 1.25rem;
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                    }
-                    &:not(:first-child) {
-                        padding-top: 0.5rem;
-                        .wrapper {
-                        }
-                    }
-                    &:not(:last-child) {
-                        .wrapper {
-                            padding-bottom: 0.5rem;
-                            border-bottom: 1px solid #e9e9e9;
-                        }
-                    }
-                    &:only-child {
-                        .wrapper {
-                            border: none;
-                            padding: 0;
-                        }
-                    }
-                    &:hover {
-                        & > .submenu {
-                            display: flex;
-                        }
-                    }
-                    span {
-                        margin-right: auto;
-                    }
-                    img {
-                        transform: rotate(-90deg);
-                        margin-left: auto;
-                    }
-                    .submenu {
-                        top: 0;
-                        left: 100%;
-                    }
-                }
-            }
-            &:hover {
-                cursor: pointer;
-                & > .submenu {
-                    transition: all 1.2s ease;
-                    display: flex;
-                }
-            }
-        }
-    }
-    @media only screen and (max-width: 620px) {
-        display: none;
-    }
-`;
+import NavStyled from "./styled/NavStyled";
 
 const Nav = () => {
+    const navRef = useRef();
+    const [limit, setLimit] = useState(null);
+    const hideAfter = 210;
+
+    const watchScrolling = () => {
+        if (
+            (navRef.current.getBoundingClientRect().y === 0) &
+            (limit === null)
+        ) {
+            setLimit(hideAfter + window.scrollY);
+        }
+        if (
+            limit &&
+            Math.floor(window.scrollY) > limit &&
+            !navRef.current.classList.contains("nav-hidden")
+        ) {
+            navRef.current.classList.add("nav-hidden");
+        }
+        if (
+            limit &&
+            Math.floor(window.scrollY) < limit - 100 &&
+            navRef.current.classList.contains("nav-hidden")
+        ) {
+            navRef.current.classList.remove("nav-hidden");
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", watchScrolling);
+
+        return () => {
+            window.removeEventListener("scroll", watchScrolling);
+        };
+    });
     const createList = (objArr) => {
         return objArr.map((object, index) => {
             if (object.submenu) {
@@ -129,7 +64,7 @@ const Nav = () => {
     const listToShow = createList(menuItems);
 
     return (
-        <NavStyled>
+        <NavStyled ref={navRef}>
             <ul>{listToShow}</ul>
         </NavStyled>
     );
