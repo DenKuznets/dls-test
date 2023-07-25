@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import arrowDown from "../../public/images/arrow-down.svg";
 import { menuItems } from "../js/menuItems";
 import NavStyled from "./styled/NavStyled";
 
@@ -45,7 +44,7 @@ const Nav = () => {
                     <li key={index}>
                         <div className="wrapper">
                             <span>{object.title}</span>
-                            <img src={arrowDown} alt="" />
+                            <img src='./images/arrow-down.svg' alt="" />
                         </div>
                         <ul className="submenu">
                             {createList(object.submenu)}
@@ -64,7 +63,7 @@ const Nav = () => {
     const listToShow = createList(menuItems);
 
     return (
-        <NavStyled ref={navRef}>
+        <NavStyled className="nav-mobile" ref={navRef}>
             <ul>{listToShow}</ul>
         </NavStyled>
     );

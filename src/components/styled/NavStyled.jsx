@@ -112,7 +112,7 @@ const NavStyled = styled.nav`
                 min-height: 0;
             }
         }
-    }
+    }    
 `;
 
 export default NavStyled;

@@ -1,15 +1,17 @@
 import Header from "./components/Header";
 import GlobalStyle from "./js/globalStyle";
 import Nav from "./components/Nav";
+import { useState } from "react";
+import NavMobile from "./components/NavMobile";
 
 function App() {
-    
+    const [showNavMobile, setShowNavMobile] = useState(true);
 
     return (
         <>
             <GlobalStyle />
-            <Header  />
-            <Nav />
+            <Header handleBurgerClick={() => setShowNavMobile(true)} />
+            {showNavMobile ? <NavMobile /> : <Nav />}
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
             perferendis minima sed aperiam adipisci dicta quod exercitationem
             soluta ducimus, totam sapiente non vel explicabo eius. Distinctio

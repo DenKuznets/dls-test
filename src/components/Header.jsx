@@ -17,10 +17,29 @@ const HeaderStyled = styled.header`
     }
 `;
 
-const Header = () => {
+const BurgerStyled = styled.img`
+    display: none;
+    cursor: pointer;
+    @media only screen and (max-width: 620px) {
+        display: block;
+    }
+`;
+
+const Burger = (props) => {
+    // console.log(props);
+    return (
+        <BurgerStyled
+            onClick={()=> props.onClick()}
+            src="./images/burger.svg"
+        />
+    );
+};
+
+const Header = (props) => {
     return (
         <HeaderStyled>
             <div className="header__content">
+                <Burger onClick={()=> props.handleBurgerClick()} />
                 <img className="header__logo" src="./images/logo.svg" alt="" />
                 <img
                     className="header__search"
