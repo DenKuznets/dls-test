@@ -49,7 +49,8 @@ const SubmenuStyled = styled.ul`
 
     .wrapper {
         display: flex;
-        padding: 0.5rem 1.25rem;
+        margin: 0 1.25rem;
+        padding: 0.5rem 0;
         border-bottom: 1px solid #e9e9e9;
         img {
             transform: rotate(-90deg);

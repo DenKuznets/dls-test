@@ -3,6 +3,7 @@ import GlobalStyle from "./js/globalStyle";
 import NavBar from "./components/Navigation/NavBar";
 import { useEffect, useState } from "react";
 import NavMobile from "./components/Navigation/NavMobile";
+import Lorem from "./components/Lorem";
 
 function App() {
     const [showNavMobile, setShowNavMobile] = useState(false);
@@ -17,12 +18,12 @@ function App() {
             <GlobalStyle />
             <Header handleBurgerClick={() => setShowNavMobile(true)} />
             {!showNavMobile && <NavBar />}
-            
+
             <NavMobile
                 className={showNavMobile ? "nav-mobile-active" : ""}
                 handleClose={() => setShowNavMobile(false)}
             />
-            
+            <Lorem/>
         </>
     );
 }
