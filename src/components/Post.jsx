@@ -55,11 +55,10 @@ const PostStyled = styled.div`
     }
 `;
 
-const Post = ({ postItem }) => {
-    // console.log(postItem);
+const Post = ({ postItem, id }) => {
 
     return (
-        <PostStyled className="post">
+        <PostStyled id={id}  className="post">
             <div className="post__image">
                 <img src="./images/post-img.jpg" alt="" />
             </div>
