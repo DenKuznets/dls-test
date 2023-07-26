@@ -4,6 +4,7 @@ import NavBar from "./components/Navigation/NavBar";
 import { useEffect, useState } from "react";
 import NavMobile from "./components/Navigation/NavMobile";
 import Lorem from "./components/Lorem";
+import Posts from "./components/Posts";
 
 function App() {
     const [showNavMobile, setShowNavMobile] = useState(false);
@@ -23,7 +24,8 @@ function App() {
                 className={showNavMobile ? "nav-mobile-active" : ""}
                 handleClose={() => setShowNavMobile(false)}
             />
-            <Lorem/>
+            {/* <Lorem/> */}
+            <Posts />
         </>
     );
 }
