@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
 const NavStyled = styled.nav`
-    overflow: unset;
-    max-height: 0;
+    /* overflow: unset; */
+    /* max-height: 0; */
     min-height: 3.6rem;
-    transition: all 1.4s ease;
+    transition: all 1s ease;
     position: sticky;
     top: 0;
     background-color: white;
@@ -13,13 +13,15 @@ const NavStyled = styled.nav`
     padding: 0 1.25rem;
     display: flex;
     justify-content: center;
+    &.nav-hidden {
+        top:-100px;
+    }
     & > ul {
         transition: all 1.4s ease;
         display: flex;
         gap: 2rem;
         list-style-type: none;
         & > li {
-            
             display: flex;
             align-items: center;
             height: 3.6rem;
@@ -31,9 +33,8 @@ const NavStyled = styled.nav`
             img {
                 margin-left: 0.25rem;
             }
-            
+
             .submenu {
-                
                 border: 1px solid #e9e9e9;
                 min-width: 11rem;
                 display: none;
@@ -45,7 +46,6 @@ const NavStyled = styled.nav`
                 z-index: 3;
                 background-color: white;
                 li {
-                    
                     display: flex;
                     position: relative;
                     padding-top: 1.25rem;
@@ -53,7 +53,6 @@ const NavStyled = styled.nav`
                         padding-bottom: 1.25rem;
                     }
                     .wrapper {
-                        
                         /* overflow: hidden; */
                         margin: 0 1.25rem;
                         width: 100%;
@@ -107,13 +106,6 @@ const NavStyled = styled.nav`
     @media only screen and (max-width: 620px) {
         display: none;
     }
-    @media only screen and (min-width: 621px) {
-        &.nav-hidden {
-            min-height: 0;
-            overflow: hidden;
-            max-height: 0;            
-        }
-    }    
 `;
 
 export default NavStyled;

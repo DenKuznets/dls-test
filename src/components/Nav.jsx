@@ -5,7 +5,7 @@ import NavStyled from "./styled/NavStyled";
 const Nav = () => {
     const navRef = useRef();
     const [limit, setLimit] = useState(null);
-    const hideAfter = 210;
+    const hideAfter = 200;
 
     const watchScrolling = () => {
         if (
@@ -23,7 +23,7 @@ const Nav = () => {
         }
         if (
             limit &&
-            Math.floor(window.scrollY) < limit - 100 &&
+            Math.floor(window.scrollY) < limit &&
             navRef.current.classList.contains("nav-hidden")
         ) {
             navRef.current.classList.remove("nav-hidden");
