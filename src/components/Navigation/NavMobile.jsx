@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { menuItems } from "../js/menuItems";
+import { menuItems } from "../../js/menuItems";
 
 const NavMobileStyled = styled.nav`
     top: 0;
