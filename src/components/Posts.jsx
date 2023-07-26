@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import { postItems } from "../js/postItems";
 import Post from "./Post";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Modal from "./Modal";
 
 const PostsStyled = styled.div`
     display: flex;
@@ -16,8 +17,21 @@ const PostsStyled = styled.div`
 `;
 
 const Posts = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [modalPost, setModalPost] = useState(null);
+
     const handleClick = (e) => {
-        console.log(e.target.closest(".post"));
+        const post = e.target.closest(".post");
+        if (post) {
+            // console.log(e.target.closest(".post").id);
+            const postId = post.id;
+            setModalPost(
+                postItemsIndexed.find((item) => item.id === parseInt(postId))
+            );
+            // console.log(modalPost);
+            // setModalPost(e.target.closest(".post").id);
+            setShowModal(true);
+        }
     };
 
     const indexPosts = (posts) =>
@@ -31,16 +45,28 @@ const Posts = () => {
     const postItemsIndexed = indexPosts(postItems);
 
     const listToShow = postItemsIndexed.map((post, index) => {
-        return <Post id={post.id} key={index} postItem={post} />;
+        return <Post key={index} postItem={post} />;
     });
 
+       useEffect(() => {
+           if (showModal) document.body.style.overflow = "hidden";
+           else document.body.style.overflow = "auto";
+       }, [showModal]);
+
     return (
-        <PostsStyled
-            onClick={(e) => handleClick(e)}
-            className="posts container"
-        >
-            {listToShow}
-        </PostsStyled>
+        <>
+            {showModal && (
+                <Modal handleCloseModal={()=>setShowModal(false)}>
+                    <Post postItem={modalPost} />
+                </Modal>
+            )}
+            <PostsStyled
+                onClick={(e) => handleClick(e)}
+                className="posts container"
+            >
+                {listToShow}
+            </PostsStyled>
+        </>
     );
 };
 

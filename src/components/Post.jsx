@@ -7,7 +7,8 @@ const PostStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
+    background-color: white;
+
     /* outline: 1px solid red; */
     .post {
         &__image {
@@ -55,10 +56,11 @@ const PostStyled = styled.div`
     }
 `;
 
-const Post = ({ postItem, id }) => {
+const Post = ({ postItem }) => {
+    // console.log(postItem);
 
-    return (
-        <PostStyled id={id}  className="post">
+    return postItem ? (
+        <PostStyled id={postItem.id} className="post">
             <div className="post__image">
                 <img src="./images/post-img.jpg" alt="" />
             </div>
@@ -81,6 +83,8 @@ const Post = ({ postItem, id }) => {
             </div>
             <div className="post__text">{postItem.text}</div>
         </PostStyled>
+    ) : (
+        <div>Loading...</div>
     );
 };
 
