@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 
 const NavStyled = styled.nav`
-    /* overflow: unset; */
-    /* max-height: 0; */
     min-height: 3.6rem;
     transition: all 1s ease;
     position: sticky;
@@ -14,7 +12,7 @@ const NavStyled = styled.nav`
     display: flex;
     justify-content: center;
     &.nav-hidden {
-        top:-100px;
+        top: -100px;
     }
     & > ul {
         transition: all 1.4s ease;
@@ -30,6 +28,17 @@ const NavStyled = styled.nav`
             font-style: normal;
             font-weight: 500;
             position: relative;
+            &:hover > li {
+                color: #969696;
+            }
+            &:hover {
+                cursor: pointer;
+                & > .submenu {
+                    transition: all 0.4s ease;
+                    display: flex;
+                }
+            }
+
             img {
                 margin-left: 0.25rem;
             }
@@ -49,16 +58,15 @@ const NavStyled = styled.nav`
                     display: flex;
                     position: relative;
                     padding-top: 1.25rem;
+                    &:hover {
+                        & > .submenu {
+                            display: flex;
+                        }
+                    }
                     &:last-child {
                         padding-bottom: 1.25rem;
                     }
-                    .wrapper {
-                        /* overflow: hidden; */
-                        margin: 0 1.25rem;
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                    }
+
                     &:not(:first-child) {
                         padding-top: 0.5rem;
                         .wrapper {
@@ -76,10 +84,13 @@ const NavStyled = styled.nav`
                             padding: 0;
                         }
                     }
-                    &:hover {
-                        & > .submenu {
-                            display: flex;
-                        }
+
+                    .wrapper {
+                        /* overflow: hidden; */
+                        margin: 0 1.25rem;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
                     }
                     span {
                         margin-right: auto;
@@ -92,13 +103,6 @@ const NavStyled = styled.nav`
                         top: 0;
                         left: 100%;
                     }
-                }
-            }
-            &:hover {
-                cursor: pointer;
-                & > .submenu {
-                    transition: all 0.4s ease;
-                    display: flex;
                 }
             }
         }
