@@ -42,9 +42,11 @@ const Nav = () => {
             if (object.submenu) {
                 return (
                     <li key={index}>
-                        <div className="wrapper">
-                            <span>{object.title}</span>
-                            <img src='./images/arrow-down.svg' alt="" />
+                        <div className="hover-effect">
+                            <div className="wrapper">
+                                <span>{object.title}</span>
+                                <img src="./images/arrow-down.svg" alt="" />
+                            </div>
                         </div>
                         <ul className="submenu">
                             {createList(object.submenu)}
@@ -54,7 +56,9 @@ const Nav = () => {
             }
             return (
                 <li key={index}>
-                    <div className="wrapper">{object.title}</div>
+                    <div className="hover-effect">
+                        <div className="wrapper">{object.title}</div>
+                    </div>
                 </li>
             );
         });

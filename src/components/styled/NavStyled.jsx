@@ -11,6 +11,15 @@ const NavStyled = styled.nav`
     padding: 0 1.25rem;
     display: flex;
     justify-content: center;
+    .hover-effect {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        &:hover {
+            color: #969696;
+        }
+    }
     &.nav-hidden {
         top: -100px;
     }
@@ -28,9 +37,7 @@ const NavStyled = styled.nav`
             font-style: normal;
             font-weight: 500;
             position: relative;
-            &:hover > li {
-                color: #969696;
-            }
+
             &:hover {
                 cursor: pointer;
                 & > .submenu {
@@ -54,6 +61,11 @@ const NavStyled = styled.nav`
                 left: 0;
                 z-index: 3;
                 background-color: white;
+                .hover-effect {
+                    &:hover {
+                        margin-left: 1rem;
+                    }
+                }
                 li {
                     display: flex;
                     position: relative;
