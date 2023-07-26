@@ -13,6 +13,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+main {
+    padding: 0 1.25rem;
+}
+
 .container{
     max-width: 72.5rem;
     margin: 0 auto;

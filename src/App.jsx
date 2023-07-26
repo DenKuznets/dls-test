@@ -25,7 +25,9 @@ function App() {
                 handleClose={() => setShowNavMobile(false)}
             />
             {/* <Lorem/> */}
-            <Posts />
+            <main>
+                <Posts />
+            </main>
         </>
     );
 }
