@@ -7,8 +7,10 @@ const PostsStyled = styled.div`
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    .post{
+    padding-top: 3rem;
+    .post {
         width: 30%;
+        cursor: pointer;
     }
 `;
 
