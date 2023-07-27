@@ -34,9 +34,11 @@ const HeaderStyled = styled.header`
                     position: fixed;
                     left: 50%;
                     z-index: 3;
-                    width: 80%;
+                    width: 95%;
+                    max-width: 30rem;
                     background-color: white;
                     transform: translate(-50%);
+                    padding: 1rem;
                 }
             }
         }
