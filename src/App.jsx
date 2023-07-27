@@ -22,7 +22,6 @@ function App() {
                 input.style.display !== "none" &&
                 window.innerWidth <= 768
             ) {
-                console.log("hide search");
                 input.style.display = "none";
             }
         };

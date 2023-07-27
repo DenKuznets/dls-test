@@ -15,7 +15,7 @@ const NavMobileStyled = styled.nav`
         height: 100vh;
         background-color: white;
         list-style-type: none;
-        width: 80%;
+        width: 85%;
         border: 1px solid #e9e9e9;
         li {
             padding: 0 1.25rem;
@@ -37,6 +37,10 @@ const NavMobileStyled = styled.nav`
         transition: 0.4s;
         padding-bottom: 1rem;
         padding-top: 1rem;
+        color: #000;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1rem;
         &:not(:last-child) {
             border-bottom: 1px solid #e9e9e9;
         }
@@ -54,7 +58,7 @@ const NavMobileStyled = styled.nav`
         overflow: hidden;
     }
     .nav-header {
-        width: 80%;
+        width: 85%;
         background-color: white;
         padding: 2rem 1.25rem 1.6rem;
         border: 1px solid #e9e9e9;

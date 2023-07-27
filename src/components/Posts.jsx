@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
-import { postItems } from "../js/postItems";
 import Post from "./Post";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
+import axios from "axios";
+import { filterItems, indexItems } from "../js/utils";
 
 const PostsStyled = styled.div`
     display: flex;
@@ -24,27 +25,32 @@ const PostsStyled = styled.div`
 `;
 
 const Posts = (props) => {
-    const postItemsIndexed = useMemo(
-        () =>
-            postItems.map((postItem, index) => {
-                return {
-                    ...postItem,
-                    id: index,
-                };
-            }),
-        []
-    );
+    const [loading, setLoading] = useState(true);
+    const [postItemsAPI, setPostItemsAPI] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [modalPost, setModalPost] = useState(null);
-    const [postItemsFiltered, setPostItemsFiltered] =
-        useState(postItemsIndexed);
+
+    useEffect(() => {
+        async function fetchData() {
+            return await axios
+                .get("https://cloud.codesupply.co/endpoint/react/data.json")
+                .then((res) => setPostItemsAPI(indexItems(res.data)));
+        }
+        if (loading) {
+            fetchData();
+        }
+
+        return () => {
+            setLoading(false);
+        };
+    }, [loading]);
 
     const handlePostClick = (e) => {
         const post = e.target.closest(".post");
         if (post) {
             const postId = post.id;
             setModalPost(
-                postItemsFiltered.find((item) => item.id === parseInt(postId))
+                postItemsAPI.find((item) => item.id === parseInt(postId))
             );
             setShowModal(true);
         }
@@ -55,28 +61,20 @@ const Posts = (props) => {
         else document.body.style.overflow = "auto";
     }, [showModal]);
 
-    useEffect(() => {
-        setPostItemsFiltered(
-            postItemsIndexed.filter((postItem) => {
-                return (
-                    postItem.title
-                        .toLowerCase()
-                        .includes(props.searchText.toLowerCase()) ||
-                    postItem.text
-                        .toLowerCase()
-                        .includes(props.searchText.toLowerCase())
-                );
-            })
-        );
-    }, [props.searchText, postItemsIndexed]);
+    const createList = (items) => {
+        if (!items) return <div>Loading...</div>;
+        return items.map((post, index) => {
+            return (
+                <div key={index} className="posts__card">
+                    <Post postItem={post} />
+                </div>
+            );
+        });
+    };
 
-    const listToShow = postItemsFiltered.map((post, index) => {
-        return (
-            <div key={index} className="posts__card">
-                <Post postItem={post} />
-            </div>
-        );
-    });
+    const listToshow = props.searchText
+        ? createList(filterItems(postItemsAPI, props.searchText))
+        : createList(postItemsAPI);
 
     return (
         <>
@@ -89,7 +87,7 @@ const Posts = (props) => {
                 onClick={(e) => handlePostClick(e)}
                 className="posts container"
             >
-                {listToShow}
+                {listToshow}
             </PostsStyled>
         </>
     );

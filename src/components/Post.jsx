@@ -2,13 +2,11 @@ import { styled } from "styled-components";
 
 const PostStyled = styled.div`
     max-width: 100%;
-    /* min-width: 15rem; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background-color: white;
 
-    /* outline: 1px solid red; */
     .post {
         &__image {
             max-width: 100%;
@@ -56,12 +54,11 @@ const PostStyled = styled.div`
 `;
 
 const Post = ({ postItem }) => {
-    // console.log(postItem);
 
     return postItem ? (
         <PostStyled id={postItem.id} className="post">
             <div className="post__image">
-                <img src="./images/post-img.jpg" alt="" />
+                <img src={postItem.img} alt="" />
             </div>
             <div className="post__tags">{postItem.tags}</div>
             <h2 className="post__title">{postItem.title}</h2>

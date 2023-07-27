@@ -14,7 +14,7 @@ body {
 }
 
 main {
-    padding: 0 1.25rem;
+    padding: 0 1.25rem 2rem;
 }
 
 .container{

@@ -15,7 +15,7 @@ const HeaderStyled = styled.header`
             justify-content: center;
             align-items: center;
         }
-        
+
         &__search {
             position: absolute;
             right: 0;
@@ -73,10 +73,7 @@ const Header = (props) => {
             inputRef.current
         ) {
             inputRef.current.style.display = "block";
-            console.log('show search');
         }
-
-        
     };
     return (
         <HeaderStyled onClick={(e) => handleHeaderClick(e)}>
