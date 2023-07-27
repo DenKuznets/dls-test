@@ -14,23 +14,23 @@ function App() {
     }, [showNavMobile]);
 
     useEffect(() => {
-        const onClick = (e) => {
-            const input = document.getElementById("header-search")
+        const onMousedown = (e) => {
+            const input = document.getElementById("header-search");
             if (
                 !e.target.classList.contains("header__search-input") &&
                 !e.target.classList.contains("header__search-img") &&
                 input.style.display !== "none" &&
                 window.innerWidth <= 768
             ) {
-                console.log('hide search');
+                console.log("hide search");
                 input.style.display = "none";
             }
         };
 
-        window.addEventListener("mousedown", onClick);
+        window.addEventListener("mousedown", onMousedown);
 
         return () => {
-            window.removeEventListener("mousedown", onClick);
+            window.removeEventListener("mousedown", onMousedown);
         };
     }, []);
 
