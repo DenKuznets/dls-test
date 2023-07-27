@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { postItems } from "../js/postItems";
 import Post from "./Post";
-import { useEffect,  useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Modal from "./Modal";
 
 const PostsStyled = styled.div`
@@ -15,7 +15,7 @@ const PostsStyled = styled.div`
         max-width: 30%;
         cursor: pointer;
         @media only screen and (max-width: 856px) {
-            max-width: 45%;            
+            max-width: 45%;
         }
         @media only screen and (max-width: 595px) {
             max-width: unset;
@@ -23,43 +23,55 @@ const PostsStyled = styled.div`
     }
 `;
 
-const Posts = () => {
+const Posts = (props) => {
+    const postItemsIndexed = useMemo(
+        () =>
+            postItems.map((postItem, index) => {
+                return {
+                    ...postItem,
+                    id: index,
+                };
+            }),
+        []
+    );
     const [showModal, setShowModal] = useState(false);
     const [modalPost, setModalPost] = useState(null);
+    const [postItemsFiltered, setPostItemsFiltered] =
+        useState(postItemsIndexed);
 
-    const handleClick = (e) => {
+    const handlePostClick = (e) => {
         const post = e.target.closest(".post");
         if (post) {
             const postId = post.id;
             setModalPost(
-                postItemsIndexed.find((item) => item.id === parseInt(postId))
+                postItemsFiltered.find((item) => item.id === parseInt(postId))
             );
             setShowModal(true);
         }
     };
 
-    const indexPosts = (posts) =>
-        posts.map((post, index) => {
-            return {
-                ...post,
-                id: index,
-            };
-        });
+    useEffect(() => {
+        if (showModal) document.body.style.overflow = "hidden";
+        else document.body.style.overflow = "auto";
+    }, [showModal]);
 
-    const postItemsIndexed = indexPosts(postItems);
+    useEffect(() => {
+        setPostItemsFiltered(
+            postItemsIndexed.filter((postItem) => {
+                return postItem.title
+                    .toLowerCase()
+                    .includes(props.searchText.toLowerCase());
+            })
+        );
+    }, [props.searchText, postItemsIndexed]);
 
-    const listToShow = postItemsIndexed.map((post, index) => {
+    const listToShow = postItemsFiltered.map((post, index) => {
         return (
             <div key={index} className="posts__card">
                 <Post postItem={post} />
             </div>
         );
     });
-
-    useEffect(() => {
-        if (showModal) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "auto";
-    }, [showModal]);
 
     return (
         <>
@@ -69,7 +81,7 @@ const Posts = () => {
                 </Modal>
             )}
             <PostsStyled
-                onClick={(e) => handleClick(e)}
+                onClick={(e) => handlePostClick(e)}
                 className="posts container"
             >
                 {listToShow}
