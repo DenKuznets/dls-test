@@ -68,7 +68,6 @@ const Burger = (props) => {
 const Header = (props) => {
     const inputRef = useRef("");
     const handleHeaderClick = (e) => {
-        // console.log(e.target);
         if (
             e.target.classList.contains("header__search-img") &&
             window.innerWidth <= 768 &&
