@@ -58,7 +58,7 @@ const Post = ({ postItem }) => {
     return postItem ? (
         <PostStyled id={postItem.id} className="post">
             <div className="post__image">
-                <img src={postItem.img} alt="" />
+                <img src={postItem.img} srcSet={postItem.img_2x} alt="" />
             </div>
             <div className="post__tags">{postItem.tags}</div>
             <h2 className="post__title">{postItem.title}</h2>
