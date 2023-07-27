@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { postItems } from "../js/postItems";
 import Post from "./Post";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect,  useState } from "react";
 import Modal from "./Modal";
 
 const PostsStyled = styled.div`
@@ -30,13 +30,10 @@ const Posts = () => {
     const handleClick = (e) => {
         const post = e.target.closest(".post");
         if (post) {
-            // console.log(e.target.closest(".post").id);
             const postId = post.id;
             setModalPost(
                 postItemsIndexed.find((item) => item.id === parseInt(postId))
             );
-            // console.log(modalPost);
-            // setModalPost(e.target.closest(".post").id);
             setShowModal(true);
         }
     };
