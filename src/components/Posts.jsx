@@ -58,9 +58,14 @@ const Posts = (props) => {
     useEffect(() => {
         setPostItemsFiltered(
             postItemsIndexed.filter((postItem) => {
-                return postItem.title
-                    .toLowerCase()
-                    .includes(props.searchText.toLowerCase());
+                return (
+                    postItem.title
+                        .toLowerCase()
+                        .includes(props.searchText.toLowerCase()) ||
+                    postItem.text
+                        .toLowerCase()
+                        .includes(props.searchText.toLowerCase())
+                );
             })
         );
     }, [props.searchText, postItemsIndexed]);
