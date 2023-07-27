@@ -15,10 +15,7 @@ const HeaderStyled = styled.header`
             justify-content: center;
             align-items: center;
         }
-        &__logo {
-            /* margin: 0 auto; */
-            /* margin-right: auto; */
-        }
+        
         &__search {
             position: absolute;
             right: 0;
