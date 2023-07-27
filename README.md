@@ -1,32 +1,3 @@
-# Тестовое задание (Front-End React)
-
-# Верстка
-
-Необходимо сверстать тестовую страницу согласно дизайн-макетам.
-
-Дизайн-макеты доступны в Figma по [ссылке](https://www.figma.com/file/5dPAPZRin0lfmgrmvVkg8R/frontend-trial?node-id=0%3A2). 
-
-
-
-
-## Retina
-
-Все изображения должны поддерживать Retina экраны и включать `srcset` атрибут (в json файле есть пути к двум картинкам).
-
-
-
-
-
-
-
-
-
-## Конечный результат
-
-Конечным результатом является ZIP архив.
-
-Название файла архива должно быть в формате `front-ivanov.zip`, где `ivanov` - Ваша фамилия. 
-
-Архив пришлите нам на почту, или закачайте на сайт/файлообменник и пришлите ссылку на скачивание.
-
-Готовый скомпилированный проект закачайте на публичный сервер (например GitHub) и пришлите ссылку.
+search posts - filters posts by title and text
+to dismiss search on mobile click/touch anywhere outside search input
+post cards are clickable
