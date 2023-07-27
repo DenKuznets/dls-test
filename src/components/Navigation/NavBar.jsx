@@ -15,7 +15,7 @@ const NavBarStyled = styled.nav`
         top: -100px;
     }
 
-    @media only screen and (max-width: 620px) {
+    @media only screen and (max-width: 768px) {
         display: none;
     }
 `;
