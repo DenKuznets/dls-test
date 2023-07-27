@@ -1,9 +1,8 @@
-import React from "react";
 import { styled } from "styled-components";
 
 const PostStyled = styled.div`
     max-width: 100%;
-    min-width: 15rem;
+    /* min-width: 15rem; */
     display: flex;
     flex-direction: column;
     gap: 1rem;

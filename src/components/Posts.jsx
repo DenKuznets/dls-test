@@ -10,9 +10,16 @@ const PostsStyled = styled.div`
     gap: 40px;
     justify-content: center;
     padding-top: 3rem;
-    .post {
-        width: 30%;
+    .posts__card {
+        width: 100%;
+        max-width: 30%;
         cursor: pointer;
+        @media only screen and (max-width: 856px) {
+            max-width: 45%;            
+        }
+        @media only screen and (max-width: 595px) {
+            max-width: unset;
+        }
     }
 `;
 
@@ -45,18 +52,22 @@ const Posts = () => {
     const postItemsIndexed = indexPosts(postItems);
 
     const listToShow = postItemsIndexed.map((post, index) => {
-        return <Post key={index} postItem={post} />;
+        return (
+            <div key={index} className="posts__card">
+                <Post postItem={post} />
+            </div>
+        );
     });
 
-       useEffect(() => {
-           if (showModal) document.body.style.overflow = "hidden";
-           else document.body.style.overflow = "auto";
-       }, [showModal]);
+    useEffect(() => {
+        if (showModal) document.body.style.overflow = "hidden";
+        else document.body.style.overflow = "auto";
+    }, [showModal]);
 
     return (
         <>
             {showModal && (
-                <Modal handleCloseModal={()=>setShowModal(false)}>
+                <Modal handleCloseModal={() => setShowModal(false)}>
                     <Post postItem={modalPost} />
                 </Modal>
             )}
