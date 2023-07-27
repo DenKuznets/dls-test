@@ -8,7 +8,7 @@ import Posts from "./components/Posts";
 
 function App() {
     const [showNavMobile, setShowNavMobile] = useState(false);
-
+    const [searchText, setSearchText] = useState("");
     useEffect(() => {
         if (showNavMobile) document.body.style.overflow = "hidden";
         else document.body.style.overflow = "auto";
@@ -17,16 +17,19 @@ function App() {
     return (
         <>
             <GlobalStyle />
-            <Header handleBurgerClick={() => setShowNavMobile(true)} />
+            <Header
+                searchText={searchText}
+                setSearchText={setSearchText}
+                handleBurgerClick={() => setShowNavMobile(true)}
+            />
             {!showNavMobile && <NavBar />}
 
             <NavMobile
                 className={showNavMobile ? "nav-mobile-active" : ""}
                 handleClose={() => setShowNavMobile(false)}
             />
-            {/* <Lorem/> */}
             <main>
-                <Posts />
+                <Posts searchText={searchText} />
             </main>
         </>
     );
