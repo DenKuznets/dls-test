@@ -16,6 +16,10 @@ const HeaderStyled = styled.header`
             align-items: center;
         }
 
+        &__logo{
+            cursor: pointer;
+        }
+
         &__search {
             position: absolute;
             right: 0;

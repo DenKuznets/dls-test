@@ -8,18 +8,22 @@ import { filterItems, indexItems } from "../js/utils";
 const PostsStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    column-gap: 40px;
+    row-gap: 48px;
     justify-content: center;
     padding-top: 3rem;
     .posts__card {
-        width: 100%;
-        max-width: 30%;
+        max-width: 22.5rem;
         cursor: pointer;
+        @media only screen and (max-width: 1240px) {
+            flex: 0 1 30%;
+        }
         @media only screen and (max-width: 856px) {
-            max-width: 45%;
+            flex: 0 1 40%;
         }
         @media only screen and (max-width: 595px) {
-            max-width: unset;
+            flex: unset;
+            width: 100%;
         }
     }
 `;
